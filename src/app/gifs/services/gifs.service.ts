@@ -29,8 +29,6 @@ export class GifsService {
     if (tag.trim().length === 0) return;
     this.organizeHistory(tag);
 
-    console.log('tags history: ', this._tagsHistory);
-
     const params = new HttpParams()
       .set('api_key', this._api_key)
       .set('q', tag)
