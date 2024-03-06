@@ -1,3 +1,6 @@
+Deployed on https://vercel.com/ossyyrrs-projects
+https://angular-03-gifs-app.vercel.app/
+
 # 03GifsApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.2.
