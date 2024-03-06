@@ -1,13 +1,7 @@
 <div class="row">
-  <div *ngFor="let gif of gifsChild; let i = index" class="col-md-3 col-sm-6">
-    <div class="card mb-2 text-center bg-dark">
-      <img
-        [src]="gif.images.downsized_medium.url"
-        [alt]="gif.title"
-        class="card-img-top"
-      />
-
-      <div class="card-body text-white">{{ gif.title }}</div>
-    </div>
-  </div>
+  <gif-card
+    *ngFor="let gif of gifsChild"
+    class="col-md-3 col-sm-6"
+    [gifChild]="gif"
+  ></gif-card>
 </div>

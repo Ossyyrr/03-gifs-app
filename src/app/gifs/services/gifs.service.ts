@@ -4,7 +4,10 @@ import { Gif, SearchResponse } from '../interfaces/gifs.interfaces';
 
 @Injectable({ providedIn: 'root' })
 export class GifsService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.loadLocalStorage();
+    if (this._tagsHistory.length > 0) this.searchTag(this._tagsHistory[0]);
+  }
 
   private _tagsHistory: string[] = [];
   public gifList: Gif[] = [];
@@ -23,6 +26,15 @@ export class GifsService {
     this._tagsHistory.unshift(tag);
 
     this._tagsHistory = this._tagsHistory.splice(0, 10); // limitar a 10
+    this.saveLocalStorage();
+  }
+
+  private saveLocalStorage(): void {
+    localStorage.setItem('history', JSON.stringify(this._tagsHistory));
+  }
+
+  private loadLocalStorage(): void {
+    this._tagsHistory = JSON.parse(localStorage.getItem('history')!) || [];
   }
 
   public searchTag(tag: string): void {
